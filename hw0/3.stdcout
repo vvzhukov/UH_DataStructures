@@ -1,0 +1,30 @@
+Input line: 1.0 1 2.0 2.2 0
+Array element: 1
+Array element: 1
+Array element: 2
+Array element: 2.2
+Array element: 0
+Input line: 1 2 3 4 5
+Array element: 1
+Array element: 2
+Array element: 3
+Array element: 4
+Array element: 5
+Input line: 0 1.0 0 0.5 0.2
+Array element: 0
+Array element: 1
+Array element: 0
+Array element: 0.5
+Array element: 0.2
+Input line: 0.4 0.2 0.2 0.0 0.4
+Array element: 0.4
+Array element: 0.2
+Array element: 0.2
+Array element: 0
+Array element: 0.4
+Input line: 2.5 1.5 1.0 0.0 3.0
+Array element: 2.5
+Array element: 1.5
+Array element: 1
+Array element: 0
+Array element: 3
