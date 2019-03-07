@@ -5,8 +5,6 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <chrono>
-#include <thread>
 #include "ArgumentManager.h"
 using namespace std;
 //Code partly from geeks for geeks.
@@ -264,7 +262,7 @@ int main (int argc, char** argv) {
             }
         }
         ifile1.close();
-    }
+    }  
     //cout<<"First element: "<<array[0]<<endl;
     //cout<<"Last element: "<<array[z-2]<<endl;
     //cout<<"Array size: "<<z-2<<endl;
@@ -303,7 +301,6 @@ int main (int argc, char** argv) {
                 } else if (sort_type == "shell")
                 {
                     shellSort(array, n-1);
-                    this_thread::sleep_for(std::chrono::nanoseconds((81*n)/10000));
                 }
                 
                 while (stream >> words2)

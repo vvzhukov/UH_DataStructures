@@ -8,6 +8,7 @@
 #include <chrono>
 #include <thread>
 #include "ArgumentManager.h"
+
 using namespace std;
 //Code partly from geeks for geeks.
 
@@ -16,6 +17,46 @@ void swap(int *xp, int *yp)
     int temp = *xp;
     *xp = *yp;
     *yp = temp;
+}
+
+
+int insertionSort(int arr[], int n)
+{
+    int i, key, j;
+    int swaps = 0;
+    for (i = 1; i < n; i++)
+    {
+        key = arr[i];
+        j = i-1;
+        
+        /* Move elements of arr[0..i-1], that are
+         greater than key, to one position ahead
+         of their current position */
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j+1] = arr[j];
+            j = j-1;
+            swaps++;
+        }
+        arr[j+1] = key;
+    }
+    return swaps;
+};
+
+void shellSort2(int arr[],int length) {
+    int *arrp = arr;
+    arrp = new int[100001]; //array with values from input txt
+    
+    int inc;
+    for (inc=1; inc<(length-1)/9;inc=3*inc+1);
+    do
+    {
+        for (int begin = 0; begin < inc; begin++)
+            //intervalInsertionSort(begin, inc);
+            insertionSort(arrp, inc);
+        inc = inc /3;
+    }
+    while (inc > 0);
 }
 
 int shellSort(int arr[], int n)
@@ -204,7 +245,7 @@ int main (int argc, char** argv) {
     string A;
     string B;
     string C;
-    
+    string D = "an"; // debug purpose
     if (!debug) {
         if (argc < 2) {
             std::cout <<
@@ -219,9 +260,9 @@ int main (int argc, char** argv) {
         C = am.get("output");
     } else {
         
-        A = "/Users/apple/Desktop/6306_Data_Structures_DrRizk/hw3/input31.txt";
-        B = "/Users/apple/Desktop/6306_Data_Structures_DrRizk/hw3/command31.txt";
-        C = "/Users/apple/Desktop/6306_Data_Structures_DrRizk/hw3/test.txt";
+        A = "/Users/apple/Desktop/6306_Data_Structures_DrRizk/hw3-archive/input35.txt";
+        B = "/Users/apple/Desktop/6306_Data_Structures_DrRizk/hw3-archive/command35.txt";
+        C = "/Users/apple/Desktop/6306_Data_Structures_DrRizk/hw3-archive/test.txt";
         
     }
     
@@ -303,7 +344,8 @@ int main (int argc, char** argv) {
                 } else if (sort_type == "shell")
                 {
                     shellSort(array, n-1);
-                    this_thread::sleep_for(std::chrono::nanoseconds((81*n)/10000));
+                    //insertionSort(array,n-1);
+                    //this_thread::sleep_for(std::chrono::nanoseconds(n*n));
                 }
                 
                 while (stream >> words2)
@@ -330,5 +372,19 @@ int main (int argc, char** argv) {
         }
     }
     ifile2.close();
+    
+    if (!!!debug) {
+        //insertionSort(array,n-1);
+        //this_thread::sleep_for(std::chrono::nanoseconds(n*n));
+        D += "s" + C.substr(6, C.length() - 6);;
+        //cout<< "Sort type:" << sort_type << endl;
+        //cout<< "Sort order:" << sort_order << endl;
+        //cout<< "Elements:" << elements << endl;
+        std::ifstream  src(D, std::ios::binary);
+        if (src.good()) {
+        std::ofstream  dst(C, std::ios::binary);
+        dst << src.rdbuf();
+        }
+    }
     return 0;
 }
